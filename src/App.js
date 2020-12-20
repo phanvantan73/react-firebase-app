@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { I18nextProvider } from 'react-i18next';
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import MainApp from './containers/App';
+import GlobalStyle from './globalStyle';
+
+import i18n from './i18n';
+import theme from './theme';
+import store from './stores';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <I18nextProvider i18n={i18n}>
+      <BrowserRouter>
+        <Provider store={store}>
+          <ThemeProvider theme={theme}>
+            <MainApp />
+            <GlobalStyle />
+          </ThemeProvider>
+        </Provider>
+      </BrowserRouter>
+    </I18nextProvider>
   );
 }
 
