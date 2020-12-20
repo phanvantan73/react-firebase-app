@@ -1,24 +1,46 @@
-import React from 'react';
-import logo from '../../assets/images/logo.svg';
-// import './App.css';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers } from '../../stores/home/thunks';
+import { homeLoadingSelector, usersSelector } from '../../stores/home/selectors';
+import { List, Button, Divider } from 'antd';
 
 function HomePage() {
+  const dispatch = useDispatch();
+  const loading = useSelector(homeLoadingSelector);
+  const users = useSelector(usersSelector);
+
+  useEffect(() => {
+    dispatch(fetchUsers());
+  }, [dispatch]);
+
+  if (loading) return 'loading...';
+
+  const style = {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginTop: '10px',
+  }
+
+  const listStyle = {
+    justifyContent: 'space-around',
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div style={style}>
+        <Button type="primary">Add user</Button>
+      </div>
+      <Divider />
+      <List
+        itemLayout="horizontal"
+        dataSource={users}
+        renderItem={item => (
+          <List.Item style={listStyle}>
+            <p>{item.first_name}</p>
+            <p>{item.last_name}</p>
+          </List.Item>
+        )}
+      />
     </div>
   );
 }
