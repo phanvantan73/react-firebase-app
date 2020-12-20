@@ -1,11 +1,10 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-// import reducers from './reducers';
-// import extraReducers from './extraReducers';
+import extraReducers from './extraReducers';
 
 const initialState = {
   loading: true,
-  posts: [],
+  users: [],
   error: {},
 };
 
@@ -17,7 +16,7 @@ const appSlice = createSlice({
       state.loading = !state.loading;
     },
   },
-  // extraReducers,
+  extraReducers,
 });
 
 export const { toggleLoading } = appSlice.actions;
