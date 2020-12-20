@@ -1,4 +1,4 @@
-### React Todo Project
+### React Firebase Project
 
 React Project using redux toolkit, antd and firestore.
 
