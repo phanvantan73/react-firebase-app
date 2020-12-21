@@ -4,7 +4,7 @@ React Project using redux toolkit, antd and firestore.
 
 ### Clone project
 ```bash
-git clone https://github.com/phanvantan73/react-todo-app.git
+git clone https://github.com/phanvantan73/react-firebase-app.git
 ```
 ### Make .env file
 ```bash
