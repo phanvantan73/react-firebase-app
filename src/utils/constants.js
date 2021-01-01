@@ -1,3 +1,5 @@
 export const routes = {
-  homepage: '/',
+  homePage: '/',
+  loginPage: '/login',
+  registerPage: '/register',
 };
