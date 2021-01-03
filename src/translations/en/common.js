@@ -8,6 +8,7 @@ export default {
   authenticate: {
     login: 'Login',
     register: 'Register',
+    logout: 'Logout',
   },
   validate: {
     required: 'Please input your {{field}}!',

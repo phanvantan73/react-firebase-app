@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Avatar, Layout } from 'antd';
+import { Layout } from 'antd';
 
 const { Header } = Layout;
 
@@ -12,21 +12,10 @@ export const LogoWrapper = styled.div`
 
 export const AuthWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  width: 120px;
   height: 31px;
   color: #fff;
-
-  & > a {
-    color: #fff;
-    font-weight: 800;
-  }
-`;
-
-export const InfoWrapper = styled(Avatar)`
-  color: #f56a00;
-  background-color: #fde3cf;
 `;
 
 export const HeaderWrapper = styled(Header)`
