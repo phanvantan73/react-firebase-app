@@ -1,8 +1,8 @@
-import firebase from '../config/firebase';
+import firebaseApp from '../config/firebase';
 
 export default {
   fetchUsers() {
-    return firebase
+    return firebaseApp
       .firestore()
       .collection('users')
       .get();

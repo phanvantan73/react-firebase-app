@@ -14,9 +14,13 @@ function App() {
   const dispatch = useDispatch();
   firebaseApp.auth().onAuthStateChanged((user) => {
     if (user) {
-      dispatch(setCurrentUser(user));
+      const currentUser = {
+        email: user.email,
+        name: `User ${user.createdAt}`,
+      };
+      dispatch(setCurrentUser(currentUser));
     } else {
-      console.log('Not login');
+      dispatch(setCurrentUser(null));
     }
   });
   return (

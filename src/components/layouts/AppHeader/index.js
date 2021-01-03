@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { currentUserSelector } from '../../../stores/home/selectors';
-import { Menu } from 'antd';
 import { useTranslation } from 'react-i18next';
+import { Menu } from 'antd';
+
+import { currentUserSelector } from '../../../stores/home/selectors';
+import InfoBlock from './InfoBlock';
+import NavigateBlock from './NavigateBlock';
 import {
   AuthWrapper,
   LogoWrapper,
-  InfoWrapper,
   HeaderWrapper,
 } from './style';
 
@@ -26,8 +27,7 @@ function AppHeader() {
         <Item key="3">{t('common.menu.about')}</Item>
       </Menu>
       <AuthWrapper>
-        {currentUser ? <InfoWrapper>T</InfoWrapper> : <><Link to="/login">Login</Link>
- | <Link to="/register">Register</Link></>}
+        {currentUser ? <InfoBlock userName={currentUser.name}/> : <NavigateBlock />}
       </AuthWrapper>
     </HeaderWrapper>
   );
