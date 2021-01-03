@@ -6,6 +6,7 @@ import { setCurrentUser } from '../../stores/home/homeSlice';
 import { routes } from '../../utils/constants';
 
 const HomePage = lazy(() => import('../HomePage'));
+const TodosPage = lazy(() => import('../TodosPage'));
 const LoginPage = lazy(() => import('../LoginPage'));
 const RegisterPage = lazy(() => import('../RegisterPage'));
 const NotFoundPage = lazy(() => import('../NotFoundPage'));
@@ -27,6 +28,7 @@ function App() {
     <Suspense fallback={null}>
       <Switch>
         <Route exact path={routes.homePage} component={HomePage} />
+        <Route path={routes.todosPage} component={TodosPage} />
         <Route exact path={routes.loginPage} component={LoginPage} />
         <Route exact path={routes.registerPage} component={RegisterPage} />
         <Route component={NotFoundPage} />
