@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Layout } from 'antd';
 
 import AppHeader from './AppHeader';
 import AppContent from './AppContent';
 import AppFooter from './AppFooter';
+import { LayoutWrapper } from './style';
 
 function MainLayout({ children }) {
   return (
-    <Layout className="layout">
+    <LayoutWrapper>
       <AppHeader />
       <AppContent children={children} />
       <AppFooter />
-    </Layout>
+    </LayoutWrapper>
   );
 }
 

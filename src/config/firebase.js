@@ -6,6 +6,6 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_API_PROJECT_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.apps.length === 0 ? firebase.initializeApp(firebaseConfig) : firebase.app();
 
-export default firebase;
+export default firebaseApp;

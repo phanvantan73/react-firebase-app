@@ -1,9 +1,19 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import MainLayout from '../../components/layouts';
+import AuthWrapper from '../../components/AuthWrapper';
+import FormItem from './components/FormItem';
 
 function LoginPage() {
+  const onFinish = (values) => {
+    console.log('Success:', values);
+  };
+
   return (
-    <div>login</div>
+    <MainLayout>
+      <AuthWrapper onFinish={onFinish}>
+        <FormItem />
+      </AuthWrapper>
+    </MainLayout>
   );
 }
 

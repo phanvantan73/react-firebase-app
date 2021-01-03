@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../stores/home/thunks';
-import { homeLoadingSelector, usersSelector } from '../../stores/home/selectors';
+import {
+  homeLoadingSelector,
+  usersSelector,
+} from '../../stores/home/selectors';
 import { List, Button, Divider } from 'antd';
 import MainLayout from '../../components/layouts';
 

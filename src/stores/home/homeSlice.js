@@ -6,6 +6,7 @@ const initialState = {
   loading: true,
   users: [],
   error: {},
+  currentUser: null,
 };
 
 const appSlice = createSlice({
@@ -15,10 +16,13 @@ const appSlice = createSlice({
     toggleLoading(state) {
       state.loading = !state.loading;
     },
+    setCurrentUser(state, action) {
+      state.currentUser = action.payload;
+    },
   },
   extraReducers,
 });
 
-export const { toggleLoading } = appSlice.actions;
+export const { toggleLoading, setCurrentUser } = appSlice.actions;
 
 export default appSlice.reducer;
