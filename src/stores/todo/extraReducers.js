@@ -1,20 +1,38 @@
 /* eslint-disable no-param-reassign */
-import { fetchTodos } from './thunks';
+import { fetchTodos, fetchTodo, updateTodo } from './thunks';
 
 const fetchTodosHandler = {
-  [fetchTodos.pending]: (state) => {
-    state.loading = true;
-  },
+  [fetchTodos.pending]: () => {},
   [fetchTodos.fulfilled]: (state, action) => {
     state.list = action.payload;
-    state.loading = false;
   },
   [fetchTodos.rejected]: (state, action) => {
-    state.loading = false;
+    state.error = action.payload;
+  },
+};
+
+const fetchTodoHandler = {
+  [fetchTodo.pending]: () => {},
+  [fetchTodo.fulfilled]: (state, action) => {
+    state.todo = action.payload;
+  },
+  [fetchTodo.rejected]: (state, action) => {
+    state.error = action.payload;
+  },
+};
+
+const updateTodoHandler = {
+  [updateTodo.pending]: () => {},
+  [updateTodo.fulfilled]: (state, action) => {
+    state.todo = action.payload;
+  },
+  [updateTodo.rejected]: (state, action) => {
     state.error = action.payload;
   },
 };
 
 export default {
   ...fetchTodosHandler,
+  ...fetchTodoHandler,
+  ...updateTodoHandler,
 };

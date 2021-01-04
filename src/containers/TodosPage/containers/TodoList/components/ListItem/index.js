@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { Link, useRouteMatch } from "react-router-dom";
 import { List } from 'antd';
 
@@ -12,8 +11,9 @@ function TodoList({ todo }) {
       <p>{todo.id}</p>
       <p>{todo.name}</p>
       <p>{todo.content}</p>
+      <p>{`${todo.done}`}</p>
       <p>
-        <Link to={`${url}/${todo.id}`}>Detail</Link>
+        <Link to={`${url}/${todo.id}/detail`}>Detail</Link>
       </p>
     </List.Item>
   );

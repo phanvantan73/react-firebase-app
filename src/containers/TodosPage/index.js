@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MainLayout from '../../components/layouts';
-import { Row, Col, Card } from 'antd';
+import { Row, Col } from 'antd';
 import TodoList from './containers/TodoList'
 import {
   BrowserRouter as Router,
@@ -16,9 +16,10 @@ import {
   todosSelector,
 } from '../../stores/todo/selectors';
 import TodoDetail from './containers/TodoDetail';
+import TodoAdd from './containers/TodoAdd';
 
 function TodosPage() {
-  const { path, url } = useRouteMatch();
+  const { path } = useRouteMatch();
   const dispatch = useDispatch();
   const todos = useSelector(todosSelector);
 
@@ -30,31 +31,15 @@ function TodosPage() {
       <Row>
         <Col span={12}>
           <TodoList todos={todos}/>
-          <Link to={`${url}/rendering`}>Rendering with React</Link>
         </Col>
         <Col span={12}>
           <Switch>
-            <Route exact path={path}>
-              <h3>Please select a topic.</h3>
-            </Route>
-            <Route path={`${path}/:todoId`}>
-              <TodoDetail />
-            </Route>
+            <Route exact path={`${path}/:todoId/detail`} component={TodoDetail} />
+            <Route exact path={`${path}/add`} component={TodoAdd} />
           </Switch>
         </Col>
       </Row>
     </MainLayout>
-  );
-}
-
-function Topic() {
-  const { todoId } = useParams();
-  return (
-    <Card title="Todo detail">
-      <p>{todoId}</p>
-      <p>Card content</p>
-      <p>Card content</p>
-    </Card>
   );
 }
 

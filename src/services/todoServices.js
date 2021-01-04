@@ -6,4 +6,13 @@ export default {
   fetchTodos() {
     return todos.get();
   },
+  fetchTodo(todoId) {
+    return todos.doc(todoId).get();
+  },
+  store(todo) {
+    return todos.add(todo);
+  },
+  update(todoId, data) {
+    todos.doc(todoId).set(data, { merge: true });
+  },
 };

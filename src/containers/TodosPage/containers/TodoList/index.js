@@ -1,26 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, List } from 'antd';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
 import ListItem from './components/ListItem';
+import ListHeader from './components/ListHeader';
 import { Wrapper } from './style';
 
 
 function TodoList({ todos }) {
-  const { path } = useRouteMatch();
   return (
     <Wrapper>
       <List
         size="large"
-        header={<div>Todos List</div>}
+        header={<ListHeader />}
         bordered
         dataSource={todos}
         renderItem={item => <ListItem todo={item} />}

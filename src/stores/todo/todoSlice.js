@@ -4,6 +4,7 @@ import extraReducers from './extraReducers';
 
 const initialState = {
   list: [],
+  todo: null,
   error: {},
 };
 
@@ -11,13 +12,13 @@ const appSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    setCurrentUser(state, action) {
-      state.currentUser = action.payload;
+    updateStatusTodo(state, action) {
+      state.todo.done = action.payload;
     },
   },
   extraReducers,
 });
 
-export const { setCurrentUser } = appSlice.actions;
+export const { updateStatusTodo } = appSlice.actions;
 
 export default appSlice.reducer;

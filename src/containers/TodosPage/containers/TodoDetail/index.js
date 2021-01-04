@@ -1,38 +1,17 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Row, Col, Card } from 'antd';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useParams } from "react-router-dom";
+
+import CardContent from './CardContent';
 import { Wrapper } from './style';
 
-function TodoDetail({ todos }) {
+function TodoDetail() {
   const { todoId } = useParams();
-  const { path } = useRouteMatch();
 
   return (
     <Wrapper>
-      <Card title="Todo detail">
-        <p>{todoId}</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </Card>
+      <CardContent todoId={todoId} />
     </Wrapper>
   );
 }
-
-// TodoList.propTypes = {
-//   todos: PropTypes.array,
-// };
-
-// TodoList.defaultProps = {
-//   todos: [],
-// };
 
 export default TodoDetail;
