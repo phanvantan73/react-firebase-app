@@ -26,10 +26,29 @@ export const fetchTodo = createAsyncThunk(
 
 export const updateTodo = createAsyncThunk(
   'todo/updateTodo',
-  async (todoId, newTodo) => {
-    console.log(todoId, newTodo);
+  async (dataPayload) => {
+    const { todoId, newTodo } = dataPayload;
     await todoServices.update(todoId, newTodo);
+    const snap = await todoServices.fetchTodo(todoId);
+    const data = {
+      ...snap.data(),
+      id: snap.id
+    };
 
-    return newTodo;
+    return data;
+  }
+);
+
+export const addTodo = createAsyncThunk(
+  'todo/addTodo',
+  async (dataPayload) => {
+    const query = await todoServices.store(dataPayload);
+    const snap = await todoServices.fetchTodo(query.id);
+    const data = {
+      ...snap.data(),
+      id: snap.id
+    };
+
+    return data;
   }
 );

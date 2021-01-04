@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Card, Button, Image } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodo, updateTodo } from '../../../../../stores/todo/thunks';
+import { fetchTodo, updateTodo, fetchTodos } from '../../../../../stores/todo/thunks';
 import { todoDetailSelector } from '../../../../../stores/todo/selectors';
 
 const { Meta } = Card;
@@ -15,8 +15,8 @@ function CardContent({ todoId }) {
 
   const handleClick = () => {
     const newTodo = {...todo, done: !todo.done};
-    dispatch(updateTodo(todoId, newTodo));
-    console.log('Clicked', todoId, todo, newTodo);
+    dispatch(updateTodo({todoId, newTodo}));
+    dispatch(fetchTodos());
   };
 
   useEffect(() => {
@@ -37,8 +37,8 @@ function CardContent({ todoId }) {
       ]})}
     >
       <Meta
-        title={todo?.name || 'none'}
-        description={todo?.content || 'none'}
+        title={todo?.title || 'none'}
+        description={todo?.description || 'none'}
       />
     </Card>
   );

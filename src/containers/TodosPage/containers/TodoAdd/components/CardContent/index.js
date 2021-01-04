@@ -1,10 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Form, Button, Input } from 'antd';
-
-const onFinish = (values) => {
-  console.log({values});
-}
 
 const layout = {
   labelCol: {
@@ -22,33 +19,41 @@ const tailLayout = {
   },
 };
 
-function CardContent() {
+function CardContent({ handleFinish }) {
   const { t } = useTranslation();
+  const [form] = Form.useForm();
+
+  const onFinish = async (values) => {
+    const newTodo = {...values, done: false};
+    handleFinish(newTodo);
+    form.resetFields();
+  };
 
   return (
     <Form
       {...layout}
+      form={form}
       onFinish={onFinish}
     >
       <Form.Item
-        label="Name"
-        name="name"
+        label="Title"
+        name="title"
         rules={[
           {
             required: true,
-            message: t('common.validate.required', { field: 'name'}),
+            message: t('common.validate.required', { field: 'title'}),
           }
         ]}
       >
         <Input />
       </Form.Item>
       <Form.Item
-        label="Content"
-        name="content"
+        label="Description"
+        name="description"
         rules={[
           {
             required: true,
-            message: t('common.validate.required', { field: 'content'}),
+            message: t('common.validate.required', { field: 'description'}),
           }
         ]}
       >
@@ -62,5 +67,9 @@ function CardContent() {
     </Form>
   );
 }
+
+CardContent.propTypes = {
+  handleFinish: PropTypes.func.isRequired,
+};
 
 export default CardContent;
