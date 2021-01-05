@@ -3,7 +3,7 @@ import { FooterWrapper } from './style';
 
 function AppFooter() {
   return (
-    <FooterWrapper>Ant Design ©2018 Created by Ant UED</FooterWrapper>
+    <FooterWrapper>Todo App ©2021 Created by TanPV</FooterWrapper>
   );
 }
 

@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const { Item } = Menu;
 
-function MenuBlock({ currentPath }) {
+function MenuBlock({ currentPath, currentUser }) {
   const { t } = useTranslation();
 
   return (
@@ -14,9 +14,9 @@ function MenuBlock({ currentPath }) {
       <Item key="/">
         <Link to="/">{t('common.menu.home')}</Link>
       </Item>
-      <Item key="/todos">
+      {currentUser && (<Item key="/todos">
         <Link to="/todos">{t('common.menu.todos')}</Link>
-      </Item>
+      </Item>)}
       <Item key="/about">
         <Link to="/about">{t('common.menu.about')}</Link>
       </Item>
@@ -26,6 +26,11 @@ function MenuBlock({ currentPath }) {
 
 MenuBlock.propTypes = {
   currentPath: PropTypes.string.isRequired,
+  currentUser: PropTypes.object,
+};
+
+MenuBlock.defaultProps = {
+  currentUser: null,
 };
 
 export default MenuBlock;
