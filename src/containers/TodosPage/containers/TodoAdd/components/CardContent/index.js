@@ -36,7 +36,7 @@ function CardContent({ handleFinish }) {
       onFinish={onFinish}
     >
       <Form.Item
-        label="Title"
+        label={t('common.label.title')}
         name="title"
         rules={[
           {
@@ -48,7 +48,7 @@ function CardContent({ handleFinish }) {
         <Input />
       </Form.Item>
       <Form.Item
-        label="Description"
+        label={t('common.label.description')}
         name="description"
         rules={[
           {
@@ -61,7 +61,7 @@ function CardContent({ handleFinish }) {
       </Form.Item>
       <Form.Item {...tailLayout}>
         <Button type="primary" htmlType="submit">
-          Create
+          {t('common.button.create')}
         </Button>
       </Form.Item>
     </Form>

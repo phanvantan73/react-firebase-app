@@ -13,6 +13,6 @@ export default {
     return todos.add(todo);
   },
   update(todoId, data) {
-    todos.doc(todoId).set(data, { merge: true });
+    return todos.doc(todoId).set(data, { merge: true });
   },
 };

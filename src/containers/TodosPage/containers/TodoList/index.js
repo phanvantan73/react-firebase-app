@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, List } from 'antd';
+import { List } from 'antd';
+
 import ListItem from './components/ListItem';
 import ListHeader from './components/ListHeader';
 import { Wrapper } from './style';

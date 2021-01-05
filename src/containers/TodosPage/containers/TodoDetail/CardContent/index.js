@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import { Card, Button, Image } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchTodo, updateTodo, fetchTodos } from '../../../../../stores/todo/thunks';
@@ -8,10 +9,10 @@ import { todoDetailSelector } from '../../../../../stores/todo/selectors';
 const { Meta } = Card;
 
 function CardContent({ todoId }) {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const todo = useSelector(todoDetailSelector);
-  // const imageUrl = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
-  const imageUrl = 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png';
+  const imageUrl = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
 
   const handleClick = () => {
     const newTodo = {...todo, done: !todo.done};
@@ -21,7 +22,6 @@ function CardContent({ todoId }) {
 
   useEffect(() => {
     dispatch(fetchTodo(todoId));
-    console.log(todoId);
   }, [todoId]);
 
   return (
@@ -32,7 +32,7 @@ function CardContent({ todoId }) {
       }
       {...(!todo?.done && { actions: [
         <Button type="primary" block onClick={handleClick}>
-          Mark as done
+          {t('common.button.mark_as_done')}
         </Button>
       ]})}
     >

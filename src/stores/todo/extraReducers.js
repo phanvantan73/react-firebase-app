@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { fetchTodos, fetchTodo, updateTodo, addTodo } from './thunks';
 
 const fetchTodosHandler = {

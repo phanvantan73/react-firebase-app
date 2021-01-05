@@ -1,17 +1,15 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import { Card } from 'antd';
 
 import CardContent from './components/CardContent';
 import { fetchTodos, addTodo } from '../../../../stores/todo/thunks';
-import { todoDetailSelector } from '../../../../stores/todo/selectors';
 import { Wrapper } from './style';
 
 function TodoAdd() {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const history = useHistory();
-  const todo = useSelector(todoDetailSelector);
 
   const handleFinish = (newTodo) => {
     dispatch(addTodo(newTodo));
@@ -20,7 +18,7 @@ function TodoAdd() {
 
   return (
     <Wrapper>
-      <Card title="Add new todo">
+      <Card title={t('common.title.add_new_todo')}>
       <CardContent handleFinish={handleFinish}/>
       </Card>
     </Wrapper>

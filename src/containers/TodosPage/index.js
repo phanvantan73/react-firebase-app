@@ -1,20 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import MainLayout from '../../components/layouts';
+import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { Row, Col } from 'antd';
+
+import MainLayout from '../../components/layouts';
 import TodoList from './containers/TodoList'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
 import { fetchTodos } from '../../stores/todo/thunks';
-import {
-  todosSelector,
-} from '../../stores/todo/selectors';
+import { todosSelector } from '../../stores/todo/selectors';
 import TodoDetail from './containers/TodoDetail';
 import TodoAdd from './containers/TodoAdd';
 
@@ -26,6 +18,7 @@ function TodosPage() {
   useEffect(() => {
     dispatch(fetchTodos());
   }, [dispatch]);
+
   return (
     <MainLayout>
       <Row>

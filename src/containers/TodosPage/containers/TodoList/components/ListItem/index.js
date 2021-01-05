@@ -1,27 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, useRouteMatch } from "react-router-dom";
-import { List } from 'antd';
-import { CheckOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
+import { CheckOutlined, EllipsisOutlined } from '@ant-design/icons';
 
-function TodoList({ todo }) {
+import { ItemWrapper } from './style';
+
+function ListItem({ todo }) {
+  const { t } = useTranslation();
   const { url } = useRouteMatch();
 
   return (
-    <List.Item>
+    <ItemWrapper
+      className={todo.done ? 'is-done' : ''}
+    >
       <p>{todo.id}</p>
       <p>{todo.title}</p>
       <p>{todo.description}</p>
-      {!todo.done && (<p><CheckOutlined /></p>)}
+      <p>{todo.done ? <CheckOutlined /> : <EllipsisOutlined />}</p>
       <p>
-        <Link to={`${url}/${todo.id}/detail`}>Detail</Link>
+        <Link to={`${url}/${todo.id}/detail`}>{t('common.button.detail')}</Link>
       </p>
-    </List.Item>
+    </ItemWrapper>
   );
 }
 
-TodoList.propTypes = {
+ListItem.propTypes = {
   todo: PropTypes.object.isRequired,
 };
 
-export default TodoList;
+export default ListItem;

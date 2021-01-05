@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import { todoServices } from '../../services';
+import { convertResponseData } from '../../utils/helper';
 
 export const fetchTodos = createAsyncThunk(
   'todo/fetchTodos',
   async () => {
-    const snap = await todoServices.fetchTodos();
-    const data = snap.docs.map((doc) => ({...doc.data(), id: doc.id}));
+    const response = await todoServices.fetchTodos();
+    const data = response.docs.map((doc) => convertResponseData(doc));
 
     return data;
   }
@@ -14,11 +16,8 @@ export const fetchTodos = createAsyncThunk(
 export const fetchTodo = createAsyncThunk(
   'todo/fetchTodo',
   async (todoId) => {
-    const snap = await todoServices.fetchTodo(todoId);
-    const data = {
-      ...snap.data(),
-      id: snap.id
-    };
+    const response = await todoServices.fetchTodo(todoId);
+    const data = convertResponseData(response);
 
     return data;
   },
@@ -29,11 +28,8 @@ export const updateTodo = createAsyncThunk(
   async (dataPayload) => {
     const { todoId, newTodo } = dataPayload;
     await todoServices.update(todoId, newTodo);
-    const snap = await todoServices.fetchTodo(todoId);
-    const data = {
-      ...snap.data(),
-      id: snap.id
-    };
+    const response = await todoServices.fetchTodo(todoId);
+    const data = convertResponseData(response);
 
     return data;
   }
@@ -42,12 +38,9 @@ export const updateTodo = createAsyncThunk(
 export const addTodo = createAsyncThunk(
   'todo/addTodo',
   async (dataPayload) => {
-    const query = await todoServices.store(dataPayload);
-    const snap = await todoServices.fetchTodo(query.id);
-    const data = {
-      ...snap.data(),
-      id: snap.id
-    };
+    const result = await todoServices.store(dataPayload);
+    const response = await todoServices.fetchTodo(result.id);
+    const data = convertResponseData(response);
 
     return data;
   }
