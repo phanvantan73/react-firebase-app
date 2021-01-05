@@ -28,4 +28,5 @@ export default {
     add_new_todo: 'Add new todo',
     todo_list: 'Todos List',
   },
+  welcome: 'Welcome to my todo app',
 };

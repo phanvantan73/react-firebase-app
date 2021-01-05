@@ -15,7 +15,7 @@ function AppHeader() {
   return (
     <HeaderWrapper>
       <LogoWrapper />
-      <MenuBlock currentPath={location.pathname} />
+      <MenuBlock currentPath={location.pathname} currentUser={currentUser} />
       <AuthWrapper>
         {currentUser ? <InfoBlock userName={currentUser.name} /> : <NavigateBlock />}
       </AuthWrapper>
