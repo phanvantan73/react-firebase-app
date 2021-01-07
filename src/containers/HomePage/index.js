@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'antd';
 
-import MainLayout from '../../components/layouts';
+import MainLayout from 'components/layouts';
 import ImageBlock from './components/ImageBlock';
 import WelcomeBlock from './components/WelcomeBlock';
 

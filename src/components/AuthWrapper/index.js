@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from 'antd';
 
-import Logo from '../../assets/images/logo.svg';
+import Logo from 'assets/images/logo.svg';
 import FormContent from './FormContent';
 import { Wrapper } from './style';
 

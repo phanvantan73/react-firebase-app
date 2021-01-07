@@ -6,6 +6,7 @@ import ListItem from './components/ListItem';
 import ListHeader from './components/ListHeader';
 import { Wrapper } from './style';
 
+const renderItem = (item) => (<ListItem todo={item} />);
 
 function TodoList({ todos }) {
   return (
@@ -15,7 +16,7 @@ function TodoList({ todos }) {
         header={<ListHeader />}
         bordered
         dataSource={todos}
-        renderItem={item => <ListItem todo={item} />}
+        renderItem={(item) => renderItem(item)}
       />
     </Wrapper>
   );

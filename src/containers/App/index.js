@@ -1,9 +1,10 @@
 import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import firebaseApp from '../../config/firebase';
-import { setCurrentUser } from '../../stores/home/homeSlice';
-import { routes } from '../../utils/constants';
+
+import firebaseApp from 'config/firebase';
+import { setCurrentUser } from 'stores/home/homeSlice';
+import { routes } from 'utils/constants';
 
 const HomePage = lazy(() => import('../HomePage'));
 const TodosPage = lazy(() => import('../TodosPage'));
@@ -24,6 +25,7 @@ function App() {
       dispatch(setCurrentUser(null));
     }
   });
+
   return (
     <Suspense fallback={null}>
       <Switch>
