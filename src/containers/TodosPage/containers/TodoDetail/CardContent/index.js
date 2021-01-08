@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Card, Button, Image } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTodo, updateTodo, fetchTodos } from '../../../../../stores/todo/thunks';
-import { todoDetailSelector } from '../../../../../stores/todo/selectors';
+import { Card, Button, Image } from 'antd';
+
+import { fetchTodo, updateTodo, fetchTodos } from 'stores/todo/thunks';
+import { todoDetailSelector } from 'stores/todo/selectors';
 
 const { Meta } = Card;
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { todoServices } from '../../services';
-import { convertResponseData } from '../../utils/helper';
+import { todoServices } from 'services';
+import { convertResponseData } from 'utils/helper';
 
 export const fetchTodos = createAsyncThunk(
   'todo/fetchTodos',

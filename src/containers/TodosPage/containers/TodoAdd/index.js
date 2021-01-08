@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Card } from 'antd';
 
 import CardContent from './components/CardContent';
-import { fetchTodos, addTodo } from '../../../../stores/todo/thunks';
+import { fetchTodos, addTodo } from 'stores/todo/thunks';
 import { Wrapper } from './style';
 
 function TodoAdd() {
@@ -19,7 +19,7 @@ function TodoAdd() {
   return (
     <Wrapper>
       <Card title={t('common.title.add_new_todo')}>
-      <CardContent handleFinish={handleFinish}/>
+        <CardContent handleFinish={handleFinish}/>
       </Card>
     </Wrapper>
   );

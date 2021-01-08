@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import { Row, Col } from 'antd';
 
-import MainLayout from '../../components/layouts';
+import MainLayout from 'components/layouts';
 import TodoList from './containers/TodoList'
-import { fetchTodos } from '../../stores/todo/thunks';
-import { todosSelector } from '../../stores/todo/selectors';
-import TodoDetail from './containers/TodoDetail';
-import TodoAdd from './containers/TodoAdd';
+import { fetchTodos } from 'stores/todo/thunks';
+import { todosSelector } from 'stores/todo/selectors';
+
+const TodoDetail = lazy(() => import('./containers/TodoDetail'));
+const TodoAdd = lazy(() => import('./containers/TodoAdd'));
 
 function TodosPage() {
   const { path } = useRouteMatch();
