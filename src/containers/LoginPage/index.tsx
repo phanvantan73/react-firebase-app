@@ -7,10 +7,15 @@ import AuthWrapper from 'components/AuthWrapper';
 import FormItem from './components/FormItem';
 import { authServices } from 'services';
 
-function LoginPage() {
+interface IData {
+  email: string,
+  password: string,
+};
+
+const LoginPage: React.FC = () => {
   const history = useHistory();
 
-  const onFinish = async (values) => {
+  const onFinish: void = async (values: TData) => {
     const { email, password } = values;
     await authServices.login(email, password);
     history.push(routes.homePage);

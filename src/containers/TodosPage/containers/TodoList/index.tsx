@@ -1,14 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { List } from 'antd';
 
 import ListItem from './components/ListItem';
 import ListHeader from './components/ListHeader';
 import { Wrapper } from './style';
 
-const renderItem = (item) => (<ListItem todo={item} />);
+interface ITodo {
+  id: string,
+  title: string,
+  description: string,
+  done: boolean,
+};
 
-function TodoList({ todos }) {
+type TProps = {
+  todos: Array<ITodo | null>,
+};
+
+const renderItem: React.ReactNode = (item: ITodo) => (<ListItem todo={item} />);
+
+const TodoList: React.FC<TProps> = ({ todos = [] }) => {
   return (
     <Wrapper>
       <List
@@ -21,13 +31,5 @@ function TodoList({ todos }) {
     </Wrapper>
   );
 }
-
-TodoList.propTypes = {
-  todos: PropTypes.array,
-};
-
-TodoList.defaultProps = {
-  todos: [],
-};
 
 export default TodoList;

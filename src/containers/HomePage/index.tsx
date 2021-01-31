@@ -5,7 +5,7 @@ import MainLayout from 'components/layouts';
 import ImageBlock from './components/ImageBlock';
 import WelcomeBlock from './components/WelcomeBlock';
 
-function HomePage() {
+const HomePage: React.FC = () => {
   return (
     <MainLayout>
       <Row gutter={16}>

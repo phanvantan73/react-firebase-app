@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ContentWrapper } from './style';
 
-function WelcomeBlock() {
+const WelcomeBlock: React.FC = () => {
   const { t } = useTranslation();
 
   return (

@@ -19,11 +19,15 @@ const tailLayout = {
   },
 };
 
-function CardContent({ handleFinish }) {
+type TProps = {
+  handleFinish: () => void,
+};
+
+const CardContent: React.FC<TProps> = ({ handleFinish }: TProps) => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
-  const onFinish = async (values) => {
+  const onFinish: void = async (values) => {
     const newTodo = {...values, done: false};
     handleFinish(newTodo);
     form.resetFields();
@@ -67,9 +71,5 @@ function CardContent({ handleFinish }) {
     </Form>
   );
 }
-
-CardContent.propTypes = {
-  handleFinish: PropTypes.func.isRequired,
-};
 
 export default CardContent;

@@ -11,7 +11,7 @@ const tailLayout = {
   },
 };
 
-function FormItem() {
+const FormItem: React.FC = () => {
   const { t } = useTranslation();
 
   return (

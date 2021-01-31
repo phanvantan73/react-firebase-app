@@ -9,13 +9,17 @@ import { todoDetailSelector } from 'stores/todo/selectors';
 
 const { Meta } = Card;
 
-function CardContent({ todoId }) {
+type TProps = {
+  todoId: string,
+};
+
+const CardContent: React.FC<TProps> = ({ todoId }) => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const todo = useSelector(todoDetailSelector);
   const imageUrl = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
 
-  const handleClick = () => {
+  const handleClick: void = () => {
     const newTodo = {...todo, done: !todo.done};
     dispatch(updateTodo({todoId, newTodo}));
     dispatch(fetchTodos());
@@ -44,9 +48,5 @@ function CardContent({ todoId }) {
     </Card>
   );
 }
-
-CardContent.propTypes = {
-  todoId: PropTypes.string.isRequired,
-};
 
 export default CardContent;
