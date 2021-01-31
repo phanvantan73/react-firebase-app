@@ -7,11 +7,11 @@ import CardContent from './components/CardContent';
 import { fetchTodos, addTodo } from 'stores/todo/thunks';
 import { Wrapper } from './style';
 
-function TodoAdd() {
+const TodoAdd: React.FC = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
-  const handleFinish = (newTodo) => {
+  const handleFinish: void = (newTodo) => {
     dispatch(addTodo(newTodo));
     dispatch(fetchTodos());
   };

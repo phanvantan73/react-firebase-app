@@ -11,7 +11,7 @@ import { todosSelector } from 'stores/todo/selectors';
 const TodoDetail = lazy(() => import('./containers/TodoDetail'));
 const TodoAdd = lazy(() => import('./containers/TodoAdd'));
 
-function TodosPage() {
+const TodosPage: React.FC = () => {
   const { path } = useRouteMatch();
   const dispatch = useDispatch();
   const todos = useSelector(todosSelector);

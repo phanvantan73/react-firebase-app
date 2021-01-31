@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CardContent from './CardContent';
 import { Wrapper } from './style';
 
-function TodoDetail() {
+const TodoDetail: React.FC = () => {
   const { todoId } = useParams();
 
   return (

@@ -7,15 +7,15 @@ import MainApp from './containers/App';
 import GlobalStyle from './globalStyle';
 
 import i18n from './i18n';
-import theme from './theme';
+import { defaultTheme } from './theme';
 import store from './stores';
 
-function App() {
+const App: React.FC = () => {
   return (
     <I18nextProvider i18n={i18n}>
       <BrowserRouter>
         <Provider store={store}>
-          <ThemeProvider theme={theme}>
+          <ThemeProvider theme={defaultTheme}>
             <MainApp />
             <GlobalStyle />
           </ThemeProvider>

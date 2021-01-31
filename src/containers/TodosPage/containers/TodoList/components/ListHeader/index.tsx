@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ListHeaderWrraper } from './style';
 
-function ListHeader() {
+const ListHeader: React.FC = () => {
   const { t } = useTranslation();
   const { url } = useRouteMatch();
 

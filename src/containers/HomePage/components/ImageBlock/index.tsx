@@ -4,7 +4,7 @@ import { Carousel, Image } from 'antd';
 
 import { ImageWrapper, ImageContainer } from './style';
 
-function ImageBlock() {
+const ImageBlock: React.FC = () => {
   const imageUrl = 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png';
 
   return (

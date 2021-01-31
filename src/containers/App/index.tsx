@@ -12,13 +12,18 @@ const LoginPage = lazy(() => import('../LoginPage'));
 const RegisterPage = lazy(() => import('../RegisterPage'));
 const NotFoundPage = lazy(() => import('../NotFoundPage'));
 
-function App() {
+type TUser = {
+  email: string | null,
+  name: string,
+};
+
+const App: React.FC = () => {
   const dispatch = useDispatch();
   firebaseApp.auth().onAuthStateChanged((user) => {
     if (user) {
-      const currentUser = {
+      const currentUser: TUser = {
         email: user.email,
-        name: `User ${user.createdAt}`,
+        name: `User ${user.metadata.creationTime}`,
       };
       dispatch(setCurrentUser(currentUser));
     } else {

@@ -1,12 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, useRouteMatch } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { CheckOutlined, EllipsisOutlined } from '@ant-design/icons';
 
 import { ItemWrapper } from './style';
 
-function ListItem({ todo }) {
+interface ITodo {
+  id: string,
+  title: string,
+  description: string,
+  done: boolean,
+};
+
+const ListItem: React.FC<ITodo> = ({ todo }: ITodo) => {
   const { t } = useTranslation();
   const { url } = useRouteMatch();
 
@@ -24,9 +30,5 @@ function ListItem({ todo }) {
     </ItemWrapper>
   );
 }
-
-ListItem.propTypes = {
-  todo: PropTypes.object.isRequired,
-};
 
 export default ListItem;
